@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Diary App - Diary List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1 class="bg-dark text-light p-2">Diary List</h1>
+    <table class="table table-bordered w-75 m-2">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date Time</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="diary : ${diaries}">
+            <td th:text="${diary.id}"></td>
+            <td th:text="${diary.title}"></td>
+            <td th:text="${diary.content}"></td>
+            <td th:text="${diary.upddate}"></td>
+            <td>
+                <a class="btn btn-success" th:href="@{/edit/{id}(id=${diary.id})}">Edit</a>
+                <a class="btn btn-danger" th:href="@{/delete/{id}(id=${diary.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <a class="btn btn-primary" href="/create">Add New Diary</a>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

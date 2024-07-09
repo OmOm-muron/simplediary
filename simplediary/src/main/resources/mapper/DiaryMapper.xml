@@ -1,0 +1,49 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.DiaryMapper">
+
+    <resultMap id="DiaryResultMap" type="com.example.entity.Diary">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="upddate" column="upddate"/>
+    </resultMap>
+
+    <select id="getAllDiaries" resultMap="DiaryResultMap">
+        SELECT * FROM diary
+        ORDER BY id
+    </select>
+
+    <select id="getDiary" resultMap="DiaryResultMap" parameterType="long">
+        SELECT * FROM diary
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertDiary" parameterType="com.example.entity.Diary" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO diary
+        (
+            title
+            , content
+            , upddate
+        ) VALUES (
+            #{title}
+            , #{content}
+            , #{upddate}
+        )
+    </insert>
+
+    <update id="updateDiary" parameterType="com.example.entity.Diary">
+        UPDATE diary
+        SET
+            title = #{title}
+            , content = #{content}
+            , upddate = #{upddate}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteDiary" parameterType="long">
+        DELETE FROM diary
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

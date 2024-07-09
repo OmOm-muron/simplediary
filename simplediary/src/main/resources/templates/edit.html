@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Diary App - Edit Diary</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1 class="bg-dark text-light p-2">Edit Diary</h1>
+    <form class="form-group w-75 m-2" action="/edit" method="post" th:object="${diary}">
+        <input type="hidden" th:field="*{id}">
+        <label>Title:</label><br>
+        <input class="form-control form-control-sm" type="text" th:field="*{title}"><br>
+        <label>Content:</label><br>
+        <textarea class="form-control" th:field="*{content}"></textarea><br>
+        <input class="btn btn-primary" type="submit" value="Update">
+    </form>
+    <a class="btn btn-link" href="/">Back to Diary List</a>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
